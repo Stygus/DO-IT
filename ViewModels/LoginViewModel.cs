@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Firebase.Auth;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -19,14 +21,48 @@ namespace DOIT.ViewModels
 
         public Command RegisterBtn { get; }
         public Command LoginBtn { get; }
+        public string UserName
+        {
+            get => userName; set
+            {
+                userName = value;
+                RaisePropertyChanged("UserName");
+            }
+        }
+
+        public string UserPassword
+        {
+            get => userPassword; set
+            {
+                userPassword = value;
+                RaisePropertyChanged("UserPassword");
+            }
+        }
 
         public LoginViewModel(INavigation navigation)
         {
             this._navigation = navigation;
             RegisterBtn = new Command(RegisterBtnTappedAsync);
-            //LoginBtn = new Command(LoginBtnTappedAsync);
+            LoginBtn = new Command(LoginBtnTappedAsync);
         }
 
+        private async void LoginBtnTappedAsync(object obj)
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(webApiKey));
+            try
+            {
+                var auth = await authProvider.SignInWithEmailAndPasswordAsync(UserName, UserPassword);
+                var content = await auth.GetFreshAuthAsync();
+                var serializedContent = JsonConvert.SerializeObject(content);
+                Preferences.Set("FreshFirebaseToken", serializedContent);
+                await this._navigation.PushAsync(new Dashboard());
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
+                throw;
+            }
+        }
 
         private async void RegisterBtnTappedAsync(object obj)
         {
