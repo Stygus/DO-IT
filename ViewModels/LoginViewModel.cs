@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -56,11 +57,28 @@ namespace DOIT.ViewModels
                 var serializedContent = JsonConvert.SerializeObject(content);
                 Preferences.Set("FreshFirebaseToken", serializedContent);
                 await this._navigation.PushAsync(new Dashboard());
+
             }
-            catch (Exception ex)
+            catch (FirebaseAuthException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
-                throw;
+                if (ex.Reason == AuthErrorReason.InvalidEmailAddress) {
+                    await App.Current!.MainPage!.DisplayAlert("", "Nieprawidłowy E-mail", "OK");
+                    return;
+                }
+
+                if (ex.Reason == AuthErrorReason.WrongPassword)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("", "Nieprawidłowe hasło", "OK");
+                    return;
+                }
+
+                if (ex.Reason == AuthErrorReason.Undefined)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("", "Nieprawidłowe dane logowania", "OK");
+                    return;
+                }
+
+                await App.Current.MainPage.DisplayAlert("", ex.Message, "OK");
             }
         }
 
