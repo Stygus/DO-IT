@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DOIT.RegisterPage"
-             Title="RegisterPage">
+             Title="">
 
 
         <Grid
@@ -11,6 +11,8 @@
             RowSpacing="20"
             VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -31,21 +33,34 @@
                 Text="Register With Email"
                 TextColor="#1C375C" />
         <Entry
-                Grid.Row="2"
-                Margin="0,20,0,0"
+                 Grid.Row="2"
+                 Margin="0,20,0,0"
+                 HorizontalOptions="FillAndExpand"
+                 Placeholder="Pseudonim"
+                 Text="{Binding Nick}"
+                 VerticalOptions="FillAndExpand" />
+        <Entry
+                Grid.Row="3"
                 HorizontalOptions="FillAndExpand"
                 Placeholder="Email"
                 Text="{Binding Email}"
                 VerticalOptions="FillAndExpand" />
         <Entry
-                Grid.Row="3"
+                Grid.Row="4"
                 HorizontalOptions="FillAndExpand"
                 IsPassword="True"
                 Placeholder="Password"
                 Text="{Binding Password}"
                 VerticalOptions="FillAndExpand" />
+        <Entry
+                Grid.Row="5"
+                HorizontalOptions="FillAndExpand"
+                IsPassword="True"
+                Placeholder="Repeat password"
+                Text="{Binding RePassword}"
+                VerticalOptions="FillAndExpand" />
         <Button
-                Grid.Row="4"
+                Grid.Row="6"
                 BackgroundColor="#1C375C"
                 Command="{Binding RegisterUser}"
                 CornerRadius="20"
