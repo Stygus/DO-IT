@@ -5,15 +5,23 @@
     xmlns:xctk="clr-namespace:Xceed.Maui.Toolkit;assembly=Xceed.Maui.Toolkit"
     BackgroundColor="{DynamicResource SecondaryColor}"
     NavigationPage.HasNavigationBar="False">
+
+    <!-- Główna warstwa AbsoluteLayout do precyzyjnego rozmieszczenia elementów na stronie. -->
     <AbsoluteLayout>
+
+        <!-- Tło strony z elementem WebView zajmującym całą stronę. -->
         <WebView
             AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
             AbsoluteLayout.LayoutFlags="All"
             BackgroundColor="#1a2029" />
+
+        <!-- Dodatkowy WebView zajmujący część ekranu, prawdopodobnie w celu dynamicznego efektu wizualnego. -->
         <WebView
             AbsoluteLayout.LayoutBounds="0.49, 0, 0.7, 1"
             AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
             BackgroundColor="#28303c" />
+
+        <!-- Kontener Grid do organizacji elementów w wierszach, zapewniający strukturę formularza logowania. -->
         <Grid
             Padding="20,50,20,0"
             AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
@@ -22,7 +30,7 @@
             RowSpacing="20"
             VerticalOptions="FillAndExpand">
 
-
+            <!-- Definicje wierszy dla siatki, każdy element znajduje się w oddzielnym wierszu. -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -32,6 +40,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
+            <!-- Logo aplikacji DOIT. -->
             <Image
                 Grid.Row="0"
                 Margin="5"
@@ -39,6 +49,7 @@
                 VerticalOptions="Center"
                 WidthRequest="200" />
 
+            <!-- FlexLayout dla pola adresu e-mail. -->
             <FlexLayout
                 Grid.Row="1"
                 Margin="40,15,40,0"
@@ -48,11 +59,14 @@
                 JustifyContent="Center"
                 Wrap="NoWrap">
 
+                <!-- Etykieta z opisem dla pola adresu e-mail. -->
                 <Label
                     Margin="0,0,25,0"
                     FontAttributes="Bold"
                     Text="Adres e-mail"
                     TextColor="#dfdfdf" />
+
+                <!-- Pole tekstowe do wprowadzania adresu e-mail przez użytkownika. -->
                 <xctk:TextBox
                     Margin="0,1,0,0"
                     Background="#dfdfdf"
@@ -69,6 +83,8 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="200" />
             </FlexLayout>
+
+            <!-- FlexLayout dla pola hasła. -->
             <FlexLayout
                 Grid.Row="2"
                 Margin="40,15,40,0"
@@ -78,11 +94,14 @@
                 JustifyContent="Center"
                 Wrap="NoWrap">
 
+                <!-- Etykieta z opisem dla pola hasła. -->
                 <Label
                     Margin="0,0,43,0"
                     FontAttributes="Bold"
                     Text="Hasło"
                     TextColor="#dfdfdf" />
+
+                <!-- Pole tekstowe do wprowadzania hasła przez użytkownika. -->
                 <xctk:TextBox
                     Margin="0,1,0,0"
                     Background="#dfdfdf"
@@ -101,7 +120,7 @@
                     WidthRequest="200" />
             </FlexLayout>
 
-
+            <!-- Przycisk do zalogowania się do aplikacji. -->
             <Button
                 Grid.Row="4"
                 Margin="0,10,0,0"
@@ -113,6 +132,7 @@
                 TextColor="White"
                 WidthRequest="180" />
 
+            <!-- Przycisk do przejścia do ekranu rejestracji. -->
             <Button
                 Grid.Row="5"
                 Margin="0,60,0,0"

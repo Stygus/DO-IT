@@ -5,16 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xctk="http://schemas.xceed.com/maui/xaml/toolkit">
 
-
+    <!-- Główna warstwa AbsoluteLayout, umożliwiająca rozmieszczenie elementów w widoku -->
     <AbsoluteLayout>
+
+        <!-- Tło w postaci WebView zajmującego całą stronę -->
         <WebView
             AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
             AbsoluteLayout.LayoutFlags="All"
             BackgroundColor="#1a2029" />
+
+        <!-- Kolejny element WebView dla dodatkowego efektu wizualnego -->
         <WebView
             AbsoluteLayout.LayoutBounds="0.49, 0, 0.7, 1"
             AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
             BackgroundColor="#28303c" />
+
+        <!-- Główna siatka dla elementów formularza rejestracji -->
         <Grid
             Padding="20,50,20,0"
             AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
@@ -23,7 +29,7 @@
             RowSpacing="20"
             VerticalOptions="FillAndExpand">
 
-
+            <!-- Definicje wierszy siatki -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -33,6 +39,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
+            <!-- Logo aplikacji -->
             <Image
                 Grid.Row="0"
                 Margin="5"
@@ -40,6 +48,7 @@
                 VerticalOptions="Center"
                 WidthRequest="200" />
 
+            <!-- Sekcja dla pola pseudonimu -->
             <FlexLayout
                 Grid.Row="1"
                 Margin="40,15,40,0"
@@ -49,11 +58,14 @@
                 JustifyContent="Center"
                 Wrap="NoWrap">
 
+                <!-- Etykieta dla pola pseudonimu -->
                 <Label
                     Margin="0,0,30,0"
                     FontAttributes="Bold"
                     Text="Pseudonim"
                     TextColor="#dfdfdf" />
+
+                <!-- Pole tekstowe dla pseudonimu -->
                 <xctk:TextBox
                     Margin="0,1,0,0"
                     Background="#dfdfdf"
@@ -70,6 +82,8 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="200" />
             </FlexLayout>
+
+            <!-- Sekcja dla pola adresu e-mail -->
             <FlexLayout
                 Grid.Row="2"
                 Margin="40,0,40,0"
@@ -79,11 +93,14 @@
                 JustifyContent="Center"
                 Wrap="NoWrap">
 
+                <!-- Etykieta dla pola adresu e-mail -->
                 <Label
                     Margin="0,0,30,0"
                     FontAttributes="Bold"
                     Text="Adres e-mail"
                     TextColor="#dfdfdf" />
+
+                <!-- Pole tekstowe dla adresu e-mail -->
                 <xctk:TextBox
                     Background="#dfdfdf"
                     BorderBrush="Transparent"
@@ -100,6 +117,7 @@
                     WidthRequest="200" />
             </FlexLayout>
 
+            <!-- Sekcja dla pola hasła -->
             <FlexLayout
                 Grid.Row="3"
                 Margin="40,0,40,0"
@@ -108,11 +126,15 @@
                 Direction="Column"
                 JustifyContent="Center"
                 Wrap="NoWrap">
+
+                <!-- Etykieta dla pola hasła -->
                 <Label
                     Margin="0,0,45,0"
                     FontAttributes="Bold"
                     Text="Hasło"
                     TextColor="#dfdfdf" />
+
+                <!-- Pole tekstowe dla hasła -->
                 <xctk:TextBox
                     Background="#dfdfdf"
                     BorderBrush="Transparent"
@@ -128,6 +150,8 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="200" />
             </FlexLayout>
+
+            <!-- Sekcja dla pola powtórzenia hasła -->
             <FlexLayout
                 Grid.Row="4"
                 Margin="40,0,40,0"
@@ -136,11 +160,15 @@
                 Direction="Column"
                 JustifyContent="Center"
                 Wrap="NoWrap">
+
+                <!-- Etykieta dla pola powtórzenia hasła -->
                 <Label
                     Margin="0,0,27,0"
                     FontAttributes="Bold"
                     Text="Powtórz hasło"
                     TextColor="#dfdfdf" />
+
+                <!-- Pole tekstowe dla powtórzenia hasła -->
                 <xctk:TextBox
                     Background="#dfdfdf"
                     BorderBrush="Transparent"
@@ -157,6 +185,8 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="200" />
             </FlexLayout>
+
+            <!-- Przycisk rejestracji -->
             <Button
                 Grid.Row="5"
                 Margin="0,20,0,0"
@@ -170,11 +200,13 @@
                 TextColor="White"
                 WidthRequest="220" />
 
+            <!-- Sekcja przycisku do logowania -->
             <FlexLayout
                 Grid.Row="6"
                 AlignContent="Center"
                 JustifyContent="Center">
 
+                <!-- Przycisk powrotu do logowania -->
                 <Button
                     Padding="0,10,0,0"
                     BackgroundColor="#28303c"
@@ -184,7 +216,6 @@
                     Text="Zaloguj się!"
                     TextColor="#ffbd59" />
             </FlexLayout>
-
 
         </Grid>
 
