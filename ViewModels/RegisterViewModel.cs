@@ -5,18 +5,22 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xceed;
+using Xceed.Maui.Toolkit;
 
 namespace DOIT.ViewModels
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     internal class RegisterViewModel : INotifyPropertyChanged
     {
+
         public string webApiKey = "AIzaSyA_I74E8Vc9HXg6P5b2Qe4bNzRYCll8fuk";
 
         private INavigation _navigation;
-        private string email;
-        private string password;
-        private string repassword;
-        private string nick;
+        private string email = "";
+        private string password = "";
+        private string repassword = "";
+        private string nick = "";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -29,6 +33,7 @@ namespace DOIT.ViewModels
                 RaisePropertyChanged("Email");
             }
         }
+       
 
         public string Password
         {
@@ -55,6 +60,8 @@ namespace DOIT.ViewModels
             }
         }
 
+
+
         public Command RegisterUser { get; }
 
         private void RaisePropertyChanged(string v)
@@ -71,15 +78,16 @@ namespace DOIT.ViewModels
 
         private async void RegisterUserTappedAsync(object obj)
         {
-            if (password.Length <= 6)
+            if (password.Length <= 6 || password == null)
             {
                 App.Current.MainPage.DisplayAlert("", "Za krótkie hasło", "OK");
+                return;
             }
-            else if (password != repassword)
+            if (password != repassword)
             {
                 App.Current.MainPage.DisplayAlert("", "Podane hasła nie są identyczne", "OK");
+                return;
             }
-            else
                 try
                 {
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(webApiKey));
@@ -112,8 +120,9 @@ namespace DOIT.ViewModels
                         return;
                     }
 
-                    await App.Current.MainPage.DisplayAlert("Alert", "Inny błąd", "OK");
+                    await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
                 }
         }
+
     }
 }
