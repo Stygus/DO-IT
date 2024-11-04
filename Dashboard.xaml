@@ -3,10 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DOIT.Dashboard"
              Title="Dashboard">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <AbsoluteLayout>
+        <!-- Zewnętrzny BoxView na całym tle -->
+        <BoxView Color="LightGray" 
+                 AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                 AbsoluteLayout.LayoutFlags="All" />
+
+        <!-- Wewnętrzny BoxView na kolor tła -->
+        <BoxView Color="White" 
+                 AbsoluteLayout.LayoutBounds="0.5,0.25,0.7,1" 
+                 AbsoluteLayout.LayoutFlags="All" />
+
+        <!-- Dodanie innych elementów -->
+        <Label Text="Witaj w aplikacji!" 
+               FontSize="24" 
+               TextColor="Black" 
+               AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize" 
+               AbsoluteLayout.LayoutFlags="PositionProportional" />
+    </AbsoluteLayout>
 </ContentPage>

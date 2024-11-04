@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DOIT.ViewModels
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     internal class LoginViewModel
     {
 
@@ -82,9 +83,9 @@ namespace DOIT.ViewModels
             }
         }
 
-        private async void RegisterBtnTappedAsync(object obj)
+        private void RegisterBtnTappedAsync(object obj)
         {
-            await this._navigation.PushAsync(new RegisterPage());
+            this._navigation.PushAsync(new RegisterPage(_navigation));
         }
         private void RaisePropertyChanged(string v)
         {
