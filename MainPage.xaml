@@ -5,69 +5,125 @@
     xmlns:xctk="clr-namespace:Xceed.Maui.Toolkit;assembly=Xceed.Maui.Toolkit"
     BackgroundColor="{DynamicResource SecondaryColor}"
     NavigationPage.HasNavigationBar="False">
-
-    
-
-    <ContentPage.Content>
+    <AbsoluteLayout>
+        <WebView
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#1a2029" />
+        <WebView
+            AbsoluteLayout.LayoutBounds="0.49, 0, 0.7, 1"
+            AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
+            BackgroundColor="#28303c" />
         <Grid
-                    Padding="20,50,20,0"
-                    HorizontalOptions="FillAndExpand"
-                    RowSpacing="20"
-                    VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+            Padding="20,50,20,0"
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            AbsoluteLayout.LayoutFlags="All"
+            HorizontalOptions="FillAndExpand"
+            RowSpacing="20"
+            VerticalOptions="FillAndExpand">
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Margin="5"
+                Source="doit.png"
+                VerticalOptions="Center"
+                WidthRequest="200" />
+
+            <FlexLayout
+                Grid.Row="1"
+                Margin="40,15,40,0"
+                AlignContent="Center"
+                AlignItems="Center"
+                Direction="Column"
+                JustifyContent="Center"
+                Wrap="NoWrap">
+
                 <Label
-                        Grid.Row="0"
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Welcome Back!"
-                        TextColor="#1C375C" />
+                    Margin="0,0,25,0"
+                    FontAttributes="Bold"
+                    Text="Adres e-mail"
+                    TextColor="#dfdfdf" />
+                <xctk:TextBox
+                    Margin="0,1,0,0"
+                    Background="#dfdfdf"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    CornerRadius="20"
+                    FontSize="15"
+                    HeightRequest="45"
+                    HorizontalContentOptions="Start"
+                    IsFocusUnderlineVisible="False"
+                    Text="{Binding UserName, Mode=TwoWay}"
+                    TextColor="Black"
+                    VerticalContentOptions="Center"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="200" />
+            </FlexLayout>
+            <FlexLayout
+                Grid.Row="2"
+                Margin="40,15,40,0"
+                AlignContent="Center"
+                AlignItems="Center"
+                Direction="Column"
+                JustifyContent="Center"
+                Wrap="NoWrap">
+
                 <Label
-                        Grid.Row="1"
-                        Margin="0,-15,0,0"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Login in to account"
-                        TextColor="#1C375C" />
-                <Entry
-                        Grid.Row="2"
-                        Margin="0,20,0,0"
-                        HorizontalOptions="FillAndExpand"
-                        Placeholder="Username"
-                        Text="{Binding UserName}"
-                        VerticalOptions="FillAndExpand" />
-                <Entry
-                        Grid.Row="3"
-                        HorizontalOptions="FillAndExpand"
-                        IsPassword="True"
-                        Placeholder="Password"
-                        Text="{Binding UserPassword}"
-                        VerticalOptions="FillAndExpand" />
-                <Button
-                        Grid.Row="4"
-                        BackgroundColor="#1C375C"
-                        Command="{Binding LoginBtn}"
-                        CornerRadius="20"
-                        Text="Login" />
+                    Margin="0,0,43,0"
+                    FontAttributes="Bold"
+                    Text="Hasło"
+                    TextColor="#dfdfdf" />
+                <xctk:TextBox
+                    Margin="0,1,0,0"
+                    Background="#dfdfdf"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    CornerRadius="20"
+                    FontFamily="password"
+                    FontSize="15"
+                    HeightRequest="45"
+                    HorizontalContentOptions="Start"
+                    IsFocusUnderlineVisible="False"
+                    Text="{Binding UserPassword, Mode=TwoWay}"
+                    TextColor="Black"
+                    VerticalContentOptions="Center"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="200" />
+            </FlexLayout>
 
-                <Button
-                        Grid.Row="5"
-                        BackgroundColor="#1C375C"
-                        Command="{Binding RegisterBtn}"
-                        CornerRadius="20"
-                        Text="Register using Email" />
-            </Grid>
 
-    </ContentPage.Content>
+            <Button
+                Grid.Row="4"
+                Margin="0,10,0,0"
+                BackgroundColor="#1a1e23"
+                Command="{Binding LoginBtn}"
+                CornerRadius="20"
+                FontAttributes="Bold"
+                Text="Zaloguj się!"
+                TextColor="White"
+                WidthRequest="180" />
 
+            <Button
+                Grid.Row="5"
+                Margin="0,60,0,0"
+                BackgroundColor="#28303c"
+                Command="{Binding RegisterBtn}"
+                CornerRadius="20"
+                FontAttributes="Bold"
+                Text="Zarejestruj się"
+                TextColor="#ffbd59"
+                WidthRequest="180" />
+        </Grid>
+    </AbsoluteLayout>
 
 </ContentPage>

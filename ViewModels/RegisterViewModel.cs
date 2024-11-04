@@ -64,6 +64,8 @@ namespace DOIT.ViewModels
 
         public Command RegisterUser { get; }
 
+        public Command Login { get; }
+
         private void RaisePropertyChanged(string v)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
@@ -72,10 +74,13 @@ namespace DOIT.ViewModels
         public RegisterViewModel(INavigation navigation)
         {
             this._navigation = navigation;
-
+            Login = new Command(UserTappedLoginAsync);
             RegisterUser = new Command(RegisterUserTappedAsync);
         }
-
+        private async void UserTappedLoginAsync()
+        {
+            await this._navigation.PopAsync();
+        }
         private async void RegisterUserTappedAsync(object obj)
         {
             if (password.Length <= 6 || password == null)

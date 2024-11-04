@@ -157,18 +157,16 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="200" />
             </FlexLayout>
-            <xctk:Button
+            <Button
                 Grid.Row="5"
                 Margin="0,20,0,0"
                 Padding="5"
                 Background="#1a1e23"
-                Command="{Binding RegisterUser, Mode=TwoWay}"
-                Content="Zarejestruj się"
+                Command="{Binding RegisterUser}"
                 CornerRadius="10"
                 FontAttributes="Bold"
-                FontSize="25"
-                PointerDown="Button_PointerDown"
-                PointerUp="Button_PointerUp"
+                FontSize="20"
+                Text="Zarejestruj się"
                 TextColor="White"
                 WidthRequest="220" />
 
@@ -177,16 +175,14 @@
                 AlignContent="Center"
                 JustifyContent="Center">
 
-                <Label
+                <Button
                     Padding="0,10,0,0"
+                    BackgroundColor="#28303c"
+                    Command="{Binding Login}"
                     FontAttributes="Bold"
                     FontSize="18"
                     Text="Zaloguj się!"
-                    TextColor="White">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnLabelTapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+                    TextColor="#ffbd59" />
             </FlexLayout>
 
 
